@@ -1226,20 +1226,23 @@
 
   <!-- Interactive Functionality Script -->
   <script>
-    // Force website to start from the first (top) section on reload instantly
-    if (history.scrollRestoration) {
-      history.scrollRestoration = 'manual';
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    window.addEventListener('beforeunload', () => {
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    });
-    window.addEventListener('load', () => {
+    // Force website to start from the first (top) section on reload, but preserve back/forward scroll position
+    const navEntries = performance.getEntriesByType('navigation');
+    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+
+    if (isReload) {
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
       window.scrollTo({ top: 0, behavior: 'instant' });
       if (window.location.hash) {
         history.replaceState("", document.title, window.location.pathname + window.location.search);
       }
-    });
+    } else {
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'auto';
+      }
+    }
 
     // Toggle header background on scroll
     const header = document.querySelector('.hero-header');
