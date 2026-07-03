@@ -1128,6 +1128,11 @@ body {
     font-size: 0.8rem;
   }
 
+  /* Prevent SVG filter bugs on mobile by disabling goo morph effect */
+  .morph-container {
+    filter: none !important;
+  }
+
   /* General section title responsive scaling */
   .section-title {
     font-size: 2.2rem !important;
