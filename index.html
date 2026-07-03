@@ -12,7 +12,22 @@
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="has-emergency-banner">
+  <!-- Emergency Alert Banner -->
+  <div class="emergency-banner" id="emergencyBanner">
+    <div class="emergency-container">
+      <div class="emergency-badge-wrap">
+        <span class="emergency-icon">🚨</span>
+        <span class="emergency-badge">Dental Emergency?</span>
+      </div>
+      <span class="emergency-text">Severe pain, swelling, or broken crown? We reserve priority slots daily.</span>
+      <div class="emergency-actions">
+        <a href="tel:+91123456789" class="emergency-call-btn">Call Now</a>
+        <button class="emergency-close-btn" id="closeEmergencyBtn" aria-label="Close Announcement">&times;</button>
+      </div>
+    </div>
+  </div>
+
   <section class="hero-section" id="home">
     <!-- Header Navigation -->
     <header class="hero-header">
@@ -113,30 +128,74 @@
   <!-- Before/After Transformation Section -->
   <section class="before-after-section" id="results">
     <div class="section-container">
+      <span class="section-tag-gold">Clinical Results</span>
       <h2 class="section-title">TRANSFORMING LIVES, <span class="text-highlight">ONE SMILE</span> AT A TIME</h2>
-      <p class="section-subtitle">Drag the slider to see the results of our professional teeth whitening and restorative treatments.</p>
+      <p class="section-subtitle">Explore our case gallery to see the real results of our cosmetic and surgical restorations.</p>
       
-      <div class="comparison-container">
-        <!-- Before image (underneath) -->
-        <div class="img-wrapper before-wrapper">
-          <img src="before.png" alt="Teeth Before Treatment">
-          <span class="label-tag before-tag">Before</span>
+      <div class="gallery-wrapper">
+        <!-- Case 1: Whitening Slider (Featured) -->
+        <div class="gallery-featured-card">
+          <div class="gallery-card-header">
+            <span class="case-badge">Case 1: Professional Whitening</span>
+            <h3>8-Shade Shade Elevation</h3>
+          </div>
+          
+          <div class="comparison-container">
+            <!-- Before image (underneath) -->
+            <div class="img-wrapper before-wrapper">
+              <img src="before.png" alt="Teeth Before Treatment">
+              <span class="label-tag before-tag">Before</span>
+            </div>
+            
+            <!-- After image (clipped, on top) -->
+            <div class="img-wrapper after-wrapper">
+              <img src="after.png" alt="Teeth After Treatment">
+              <span class="label-tag after-tag">After</span>
+            </div>
+            
+            <!-- Slider Handle and Bar -->
+            <input type="range" min="0" max="100" value="50" class="slider" id="revealSlider">
+            <div class="slider-button" id="sliderButton">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+                <polyline points="9 18 3 12 9 6"></polyline>
+                <polyline points="21 18 15 12 21 6"></polyline>
+              </svg>
+            </div>
+          </div>
         </div>
-        
-        <!-- After image (clipped, on top) -->
-        <div class="img-wrapper after-wrapper">
-          <img src="after.png" alt="Teeth After Treatment">
-          <span class="label-tag after-tag">After</span>
-        </div>
-        
-        <!-- Slider Handle and Bar -->
-        <input type="range" min="0" max="100" value="50" class="slider" id="revealSlider">
-        <div class="slider-button" id="sliderButton">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-            <polyline points="9 18 3 12 9 6"></polyline>
-            <polyline points="21 18 15 12 21 6"></polyline>
-          </svg>
+
+        <!-- Case 2 & 3: Side cases grid -->
+        <div class="gallery-cases-grid">
+          <!-- Case 2 -->
+          <div class="case-card">
+            <div class="case-card-visual">
+              <div class="case-thumb-split">
+                <div class="case-thumb-before" style="background-image: url('before.png');"></div>
+                <div class="case-thumb-after" style="background-image: url('after.png'); filter: brightness(1.08) contrast(1.05);"></div>
+              </div>
+              <span class="case-visual-badge">Cosmetic</span>
+            </div>
+            <div class="case-card-info">
+              <h3>Case 2: Porcelain Veneers</h3>
+              <p>Realigned minor crowding and optimized shade using 6 ultra-thin lithium disilicate porcelain veneers.</p>
+            </div>
+          </div>
+
+          <!-- Case 3 -->
+          <div class="case-card">
+            <div class="case-card-visual">
+              <div class="case-thumb-split">
+                <div class="case-thumb-before" style="background-image: url('before.png'); filter: grayscale(0.8) contrast(1.1) brightness(0.9);"></div>
+                <div class="case-thumb-after" style="background-image: url('after.png');"></div>
+              </div>
+              <span class="case-visual-badge">Surgical</span>
+            </div>
+            <div class="case-card-info">
+              <h3>Case 3: Guided Single Implant</h3>
+              <p>Reconstructed central incisor tooth with a custom CAD/CAM crown over a titanium bone-integrated implant.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -292,8 +351,8 @@
           </div>
           <h3 class="service-card-title">Preventive Care</h3>
           <p class="service-card-desc">Advanced ultrasonic scaling, deep cleanings, and computerized cavity detection to preserve your natural smile.</p>
-          <a href="#book" class="service-link">
-            <span>Book Cleanings</span>
+          <a href="treatment-preventive.html" class="service-link">
+            <span>Learn More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -310,8 +369,8 @@
           </div>
           <h3 class="service-card-title">Cosmetic Design</h3>
           <p class="service-card-desc">Hand-crafted porcelain veneers, composite bonding, and in-office zoom whitening to build your custom look.</p>
-          <a href="#book" class="service-link">
-            <span>Explore Options</span>
+          <a href="treatment-cosmetic.html" class="service-link">
+            <span>Learn More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -329,8 +388,8 @@
           </div>
           <h3 class="service-card-title">Dental Implants</h3>
           <p class="service-card-desc">Stable bio-compatible implants paired with CAD/CAM custom crowns to restore missing teeth with perfect aesthetics.</p>
-          <a href="#book" class="service-link">
-            <span>Learn Implants</span>
+          <a href="treatment-implants.html" class="service-link">
+            <span>Learn More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -348,8 +407,8 @@
           </div>
           <h3 class="service-card-title">Orthodontics</h3>
           <p class="service-card-desc">Virtually invisible aligner systems and modern aesthetic braces to align teeth efficiently and comfortably.</p>
-          <a href="#book" class="service-link">
-            <span>See Invisalign</span>
+          <a href="treatment-orthodontics.html" class="service-link">
+            <span>Learn More</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -602,6 +661,92 @@
     </div>
   </section>
 
+  <!-- Google Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-container">
+      <span class="section-tag-gold">Patient Success</span>
+      <h2 class="section-title">WHAT OUR PATIENTS SAY <span class="text-highlight">ON GOOGLE</span></h2>
+      <p class="section-subtitle">Real feedback from verified patients highlighting our pain-free treatments, cosmetic enhancements, and surgical expertise.</p>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-profile">
+              <div class="reviewer-avatar avatar-1">SM</div>
+              <div class="reviewer-meta">
+                <h4>Sarah Miller</h4>
+                <span class="review-date">1 week ago</span>
+              </div>
+            </div>
+            <div class="google-badge-logo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.51 0-6.357-2.89-6.357-6.457 0-3.567 2.847-6.458 6.357-6.458 1.575 0 2.985.576 4.095 1.62l3.15-3.15C19.065 2.128 15.93 1 12.24 1 5.928 1 1 5.928 1 12.24s4.928 11.24 11.24 11.24c6.312 0 10.748-4.437 10.748-10.748 0-.747-.075-1.425-.225-2.07H12.24z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="review-rating">
+            <span class="star-rating">★★★★★</span>
+          </div>
+          <p class="review-body">"Getting implants with Dr. Adrian Vance was completely pain-free! The Wand anesthesia system is unbelievable—I didn't feel a thing. Highly recommend Dentysta!"</p>
+          <div class="verified-indicator">
+            <span class="check-icon">✓</span> Verified Patient
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-profile">
+              <div class="reviewer-avatar avatar-2">DK</div>
+              <div class="reviewer-meta">
+                <h4>David Kovacs</h4>
+                <span class="review-date">3 weeks ago</span>
+              </div>
+            </div>
+            <div class="google-badge-logo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.51 0-6.357-2.89-6.357-6.457 0-3.567 2.847-6.458 6.357-6.458 1.575 0 2.985.576 4.095 1.62l3.15-3.15C19.065 2.128 15.93 1 12.24 1 5.928 1 1 5.928 1 12.24s4.928 11.24 11.24 11.24c6.312 0 10.748-4.437 10.748-10.748 0-.747-.075-1.425-.225-2.07H12.24z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="review-rating">
+            <span class="star-rating">★★★★★</span>
+          </div>
+          <p class="review-body">"Dr. Evelyn Sterling designed my clear aligners. The digital preview matched the final outcome perfectly! Very premium clinic experience and lovely staff."</p>
+          <div class="verified-indicator">
+            <span class="check-icon">✓</span> Verified Patient
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-profile">
+              <div class="reviewer-avatar avatar-3">EA</div>
+              <div class="reviewer-meta">
+                <h4>Elena Alva</h4>
+                <span class="review-date">1 month ago</span>
+              </div>
+            </div>
+            <div class="google-badge-logo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.51 0-6.357-2.89-6.357-6.457 0-3.567 2.847-6.458 6.357-6.458 1.575 0 2.985.576 4.095 1.62l3.15-3.15C19.065 2.128 15.93 1 12.24 1 5.928 1 1 5.928 1 12.24s4.928 11.24 11.24 11.24c6.312 0 10.748-4.437 10.748-10.748 0-.747-.075-1.425-.225-2.07H12.24z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="review-rating">
+            <span class="star-rating">★★★★★</span>
+          </div>
+          <p class="review-body">"I had a cosmetic chip restored with biomimetic composite bonding. The tooth looks entirely natural, and the margins are invisible. Exceptional craftsmanship!"</p>
+          <div class="verified-indicator">
+            <span class="check-icon">✓</span> Verified Patient
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About Section -->
   <section class="about-section" id="about">
     <div class="section-container">
@@ -691,6 +836,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- Booking Section -->
   <section class="booking-section" id="book">
@@ -893,10 +1040,125 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Final Page Footer -->
-    <footer class="main-footer">
+      <!-- Google Maps Embed -->
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6175402097066!2d-73.985428!3d40.748441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sin!4v1688320493829!5m2!1sen!2sin" 
+          width="100%" 
+          height="350" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Dentysta Clinic Map Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq-section" id="faq">
+    <div class="section-container">
+      <span class="section-tag-gold">Common Queries</span>
+      <h2 class="section-title">PATIENT <span class="text-highlight">QUESTIONS</span></h2>
+      <p class="section-subtitle">Find immediate answers to clinical protocols, treatment options, insurance, and emergency dental arrangements.</p>
+
+      <div class="faq-accordion">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Is computerized local anesthesia (The Wand®) completely painless?</span>
+            <span class="faq-toggle-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line class="line-h" x1="5" y1="12" x2="19" y2="12"></line>
+                <line class="line-v" x1="12" y1="5" x2="12" y2="19"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Yes. The Wand® regulates anesthetic delivery at a slow, computerized flow rate below the threshold of human pain receptors. This neutralizes the typical stinging sensation caused by rapid fluid injection pressure from syringes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>What is biomimetic dentistry and how does it benefit me?</span>
+            <span class="faq-toggle-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line class="line-h" x1="5" y1="12" x2="19" y2="12"></line>
+                <line class="line-v" x1="12" y1="5" x2="12" y2="19"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Biomimetic dentistry aims to reconstruct teeth using advanced bonding materials and protocols that mimic the natural tooth's elasticity, flex, and structural mechanics. This approach avoids aggressive grinding reductions, preserving up to 80% of your healthy tooth structure compared to traditional crowns.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>How long does a dental implant procedure take?</span>
+            <span class="faq-toggle-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line class="line-h" x1="5" y1="12" x2="19" y2="12"></line>
+                <line class="line-v" x1="12" y1="5" x2="12" y2="19"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Under our computerized 3D guided surgery guides, placement of a single titanium implant post takes approximately 45 minutes. Following placement, a natural bone integration phase of 3 to 4 months occurs before we lock the custom porcelain crown onto the implant structure.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>Do you accept health insurance or offer payment financing?</span>
+            <span class="faq-toggle-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line class="line-h" x1="5" y1="12" x2="19" y2="12"></line>
+                <line class="line-v" x1="12" y1="5" x2="12" y2="19"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Yes. We accept dental plans from all leading insurance providers and process claims directly to optimize your benefits. We also offer 0% APR monthly financing plans up to 12 months for comprehensive cosmetic restorations and implant surgeries.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-header">
+            <span>What constitutes a dental emergency and how quickly can I be seen?</span>
+            <span class="faq-toggle-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                <line class="line-h" x1="5" y1="12" x2="19" y2="12"></line>
+                <line class="line-v" x1="12" y1="5" x2="12" y2="19"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Dental emergencies include acute toothaches, throbbing dental pain, oral abscess swelling, knocked-out teeth, or fractured crowns. We prioritize urgent patients and hold dedicated emergency slots daily. Contact our urgent line (+91 123-456-789) immediately to be scheduled within 2 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Page Footer -->
+  <footer class="main-footer">
       <div class="footer-container">
         <div class="footer-top">
           <div class="footer-brand">
@@ -940,10 +1202,24 @@
         </div>
       </div>
     </footer>
-  </section>
 
   <!-- Interactive Functionality Script -->
   <script>
+    // Force website to start from the first (top) section on reload
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
+      if (window.location.hash) {
+        history.replaceState("", document.title, window.location.pathname + window.location.search);
+      }
+    });
+
     // Toggle header background on scroll
     const header = document.querySelector('.hero-header');
     if (header) {
@@ -1473,6 +1749,58 @@
         }
       });
     }
+
+    // Emergency Banner Close Handler
+    const emergencyBanner = document.getElementById('emergencyBanner');
+    const closeEmergencyBtn = document.getElementById('closeEmergencyBtn');
+    if (closeEmergencyBtn && emergencyBanner) {
+      closeEmergencyBtn.addEventListener('click', () => {
+        emergencyBanner.style.transform = 'translateY(-100%)';
+        setTimeout(() => {
+          emergencyBanner.style.display = 'none';
+          document.body.classList.remove('has-emergency-banner');
+        }, 300);
+      });
+    }
+
+    // Sticky Booking Button Visibility Toggle on Scroll
+    const stickyBookingBtn = document.getElementById('stickyBookingBtn');
+    if (stickyBookingBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+          stickyBookingBtn.classList.add('visible');
+        } else {
+          stickyBookingBtn.classList.remove('visible');
+        }
+      });
+    }
+
+    // FAQ Accordion Toggle Interaction
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const header = item.querySelector('.faq-header');
+      header.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other active items
+        faqItems.forEach(i => {
+          if (i !== item) {
+            i.classList.remove('active');
+            const ans = i.querySelector('.faq-answer');
+            ans.style.maxHeight = null;
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle('active');
+        const answer = item.querySelector('.faq-answer');
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    });
   </script>
 
   <!-- SVG Gooey Filter for Liquid Morph -->
@@ -1499,5 +1827,24 @@
       </div>
     </div>
   </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/91123456789" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg class="whatsapp-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.017-5.114-2.871-6.973-1.854-1.859-4.322-2.88-6.967-2.882-5.438 0-9.863 4.42-9.867 9.864-.001 1.73.457 3.418 1.32 4.933l-.994 3.634 3.731-.978zM17.386 14.19c-.292-.146-1.728-.853-1.996-.952-.267-.099-.462-.148-.657.146-.195.293-.754.95-.925 1.146-.17.195-.341.22-.633.073-1.294-.648-2.13-1.157-2.984-2.617-.225-.386.225-.359.643-1.198.073-.146.037-.27-.018-.38-.056-.11-.463-1.12-.634-1.536-.167-.406-.35-.35-.463-.356h-.39c-.134 0-.353.05-.537.25-.184.2-.702.688-.702 1.677 0 .99.72 1.95.82 2.083.101.134 1.417 2.167 3.435 3.038.48.207.855.33 1.147.423.483.153.923.131 1.27.079.387-.058 1.728-.706 1.972-1.389.244-.683.244-1.269.17-1.389-.073-.12-.268-.194-.56-.341z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat with us</span>
+  </a>
+
+  <!-- Sticky Book Appointment Button -->
+  <a href="#book" class="sticky-booking-btn" id="stickyBookingBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+    </svg>
+    <span>Book Appointment</span>
+  </a>
 </body>
 </html>
