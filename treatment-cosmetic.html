@@ -25,24 +25,34 @@
       <span class="logo-text">dentysta</span>
     </a>
 
-    <!-- Navigation Menu (Synced Order) -->
-    <nav class="nav-pill">
-      <a href="index.html#home" class="nav-link">Home</a>
-      <a href="index.html#doctors" class="nav-link">Doctors</a>
-      <a href="index.html#services" class="nav-link active">Services</a>
-      <a href="index.html#blog" class="nav-link">Blog</a>
-      <a href="index.html#about" class="nav-link">About</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
-      <a href="index.html#faq" class="nav-link">FAQ</a>
-    </nav>
+      <!-- Navigation & Contact Wrapper for Mobile Menu -->
+      <div class="nav-menu-wrapper" id="navMenuWrapper">
+        <!-- Navigation Menu (Synced Order) -->
+        <nav class="nav-pill">
+          <a href="index.html#home" class="nav-link">Home</a>
+          <a href="index.html#doctors" class="nav-link">Doctors</a>
+          <a href="index.html#services" class="nav-link active">Services</a>
+          <a href="index.html#blog" class="nav-link">Blog</a>
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="index.html#faq" class="nav-link">FAQ</a>
+        </nav>
 
-    <!-- Header Contact Button -->
-    <div class="header-contact">
-      <a href="tel:+91123456789" class="contact-pill" style="text-decoration: none;">
-        <span>Call Urgent Desk</span>
-      </a>
-    </div>
-  </header>
+        <!-- Header Contact Button -->
+        <div class="header-contact">
+          <a href="tel:+91123456789" class="contact-pill" style="text-decoration: none;">
+            <span>Call Urgent Desk</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </header>
 
   <!-- Treatment Hero Banner -->
   <section class="subpage-hero treatment-hero" style="background-image: linear-gradient(135deg, rgba(30, 58, 71, 0.9) 0%, rgba(22, 42, 52, 0.95) 100%), url('treatment_cosmetic.png'); background-size: cover; background-position: center;">
@@ -188,6 +198,27 @@
       if (history.scrollRestoration) {
         history.scrollRestoration = 'auto';
       }
+    }
+
+    // Mobile Menu Toggle Behavior
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navMenuWrapper = document.getElementById('navMenuWrapper');
+    if (mobileMenuToggle && navMenuWrapper) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navMenuWrapper.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+
+      // Close menu when clicking a nav link
+      const links = navMenuWrapper.querySelectorAll('.nav-link, .contact-pill');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuToggle.classList.remove('active');
+          navMenuWrapper.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
     }
 
     const backToTopBtn = document.getElementById('backToTopBtn');
