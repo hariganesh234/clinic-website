@@ -4233,6 +4233,11 @@ body.has-emergency-banner .hero-content {
   width: auto;
 }
 
+/* Mobile Header Contacts Tray styling */
+.mobile-header-contacts {
+  display: none;
+}
+
 @media (max-width: 992px) {
   .mobile-menu-toggle {
     display: flex;
@@ -4255,6 +4260,49 @@ body.has-emergency-banner .hero-content {
     flex-wrap: nowrap !important;
     padding: 1rem 1.5rem !important;
     gap: 0 !important;
+  }
+
+  .mobile-header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-left: auto;
+    margin-right: 1.25rem;
+    z-index: 1002;
+  }
+
+  .mobile-contact-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(253, 251, 247, 0.08);
+    border: 1px solid rgba(253, 251, 247, 0.18);
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .scrolled .mobile-contact-btn,
+  .light-header .mobile-contact-btn {
+    background: rgba(30, 58, 71, 0.05);
+    border-color: rgba(30, 58, 71, 0.12);
+    color: var(--primary-color);
+  }
+
+  .mobile-contact-btn:active {
+    transform: scale(0.9);
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--primary-color);
+  }
+
+  body.menu-open .mobile-contact-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
   }
 
   .nav-menu-wrapper {
